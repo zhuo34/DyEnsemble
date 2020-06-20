@@ -8,11 +8,11 @@ This repository is a simple implementation of **Dynamic Ensemble Model(DyEnsembl
 
 ### 1 Design and Usage
 
-The Dynamic Ensemble Model is implemented as class `DyEnsemble` which is modified from class `ParticleFilter`. In order to represent transition and measurement models(functions) in DyEnsemble, I create two abstract base classes named `DyEnsenmbelTModel` and `DyEnsenmbelMModel`, respectively.
+The Dynamic Ensemble Model is implemented as class `DyEnsemble` which is modified from class `ParticleFilter`. In order to represent transition and measurement models(functions) in DyEnsemble, I create two abstract base classes named `DyEnsembleTModel` and `DyEnsembleMModel`, respectively.
 
 Now, I will use an example to show you how to use my `DyEnsemble` with codes in `main.py`.
 
-**Firstly**, create customed transition functions and measurement functions by inheriting `DyEnsenmbelTModel` and `DyEnsenmbelMModel`. In this example, transition functions and measurement functions are shown as follows.
+**Firstly**, create customized transition functions and measurement functions by inheriting `DyEnsembleTModel` and `DyEnsembleMModel`. In this example, transition functions and measurement functions are shown as follows.
 
 ![equations](./docs/img/eq.png)
 
