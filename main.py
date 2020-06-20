@@ -65,9 +65,7 @@ if __name__ == '__main__':
 	fig, axs = plt.subplots(3, len(alpha), figsize=(50, 5))
 	for i in range(len(alpha)):
 		model(0, y, 200, alpha[i], save_pm=True)
-		plt.axis('off')
 		axs[0, i].plot(t, model.pms[:, 0], 'b')
 		axs[1, i].plot(t, model.pms[:, 1], 'r')
-		plt.axis('on')
 		axs[2, i].plot(t, model.pms[:, 2], 'g')
 	plt.show()
