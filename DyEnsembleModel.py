@@ -7,6 +7,11 @@ from sklearn import linear_model
 
 class DyEnsembleTModel:
 	def __init__(self, x_dim, step=None):
+		"""
+		params:
+			x_dim: dimension of state
+			step: variants in transition models(functions) which vary with time
+		"""
 		self.n = x_dim
 		self.step = step
 
@@ -16,6 +21,9 @@ class DyEnsembleTModel:
 	@abc.abstractclassmethod
 	def f(self, x):
 		pass
+
+	def __call__(self, x):
+		return self.f(x)
 
 	def next_step(self):
 		pass
@@ -34,6 +42,9 @@ class DyEnsembleMModel:
 	@abc.abstractclassmethod
 	def h(self, x):
 		pass
+
+	def __call__(self, x):
+		return self.h(x)
 
 	def prob(self, z, z_):
 		return scipy.stats.multivariate_normal(z, np.identity(self.m)).pdf(z_)
@@ -57,7 +68,7 @@ class DyEnsembleLinear(DyEnsembleTModel, DyEnsembleMModel):
 		z_ = self.h(x)
 		self.Q = (z - z_).T @ (z - z_) / dataset_size
 
-	def f(self, x, step):
+	def f(self, x):
 		return x @ self.A
 	
 	def random(self, size):
